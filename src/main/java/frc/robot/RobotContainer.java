@@ -5,10 +5,9 @@
 package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.DriveCommand;
-import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.drive.*;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
@@ -32,12 +31,8 @@ public class RobotContainer {
     controller = new XboxController(0);
     // Configure the trigger bindings
 
-    drivebaseSubsystem = new Drive();
-    drivebaseSubsystem.setDefaultCommand(new DriveCommand(
-      () -> controller.getLeftY(),
-      () -> controller.getRightX(),
-      drivebaseSubsystem
-  ));
+    drivebaseSubsystem = new Drive(new DriveIOSparkMax());
+    drivebaseSubsystem.setDefaultCommand(new RunCommand( () -> drivebaseSubsystem.arcadeCommand(controller.getLeftY(),controller.getRightX()),drivebaseSubsystem));
 
     configureBindings();
 }

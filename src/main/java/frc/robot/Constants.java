@@ -21,5 +21,7 @@ public final class Constants {
     public static final int frontleftID = 1;
     public static final int backrightID = 2;
     public static final int backleftID = 3;
+
+    public static final double rRotRateTOVolt = 12.0;
   } 
 }

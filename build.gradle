@@ -107,7 +107,3 @@ repositories {
         }
     }
 }
-
-configurations.all {
-    exclude group: "edu.wpi.first.wpilibj"
-}
